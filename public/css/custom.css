@@ -1,0 +1,37 @@
+/* your styles go here */
+.cd-cart .cd-item-remove {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: url("../img/cd-remove-item.svg") no-repeat center center;
+}
+.no-touch #cd-cart .cd-item-remove:hover {
+  background-color: #e0e6ef;
+}
+
+.cd-price {
+  float: left;
+  color: #a5aebc;
+}
+
+.actions{
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+#details img {
+    margin: 15px auto;
+    display: block;
+    max-width: 550px;
+    height: auto!important;
+}
