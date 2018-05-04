@@ -40,10 +40,29 @@ class PageController extends Controller
     	return view('pages.checkout');
     }
 
+    public function getCheckout1(){
+        return view('pages.checkout1');
+    }
+
+    public function getCheckout2(){
+        return view('pages.checkout2');
+    }
+
+    public function getCheckout3(){
+        return view('pages.checkout3');
+    }
+
+    public function getCheckout4(){
+        return view('pages.checkout4');
+    }
 
     public function getLogin(){
         // $data = Product::where("name","=","ABC")->first();
         // dd($data);
         return view('pages.login');
+    }
+
+    public function getContact(){
+        return view('pages.contact');
     }
 }

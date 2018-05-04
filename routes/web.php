@@ -27,7 +27,7 @@ Route::get('/',[
 
 Route::get('/home',[
 	'as'=>'home',
-	'uses'=>'HomeController@getIndex'
+	'uses'=>'PageController@getIndex'
 ]);
 
 Route::get('/shop', "ProductController@getProduct");
@@ -36,7 +36,22 @@ Route::get('/product/{id}', "ProductController@getDetail");
 
 Route::get('/cart', "PageController@getCart");
 
-Route::get('/checkout', "PageController@getCheckout");
+Route::get('/checkout1', "PageController@getCheckout1");
+Route::get('/checkout2', "PageController@getCheckout2");
+Route::get('/checkout3', "PageController@getCheckout3");
+Route::get('/checkout4', "PageController@getCheckout4");
+Route::get('/contact', "PageController@getContact");
+
+Route::get('/checkout',[
+	'as'=>'checkout',
+	'uses'=>'OrderController@index'
+]);
+
+// Route::get('/checkout',[
+// 	'as'=>'checkout',
+// 	'uses'=>'OrderController@index'
+// ])->middleware('CheckUserCheckOut');
+
 
 Route::get('/login', "PageController@getLogin");
 
@@ -47,9 +62,19 @@ Route::post('/add-cart',[
 	'uses'=>'CartController@addCart'
 ]);
 
+// Route::post('/update-cart',[
+// 	'as'=>'updatecart',
+// 	'uses'=>'CartController@updateCart'
+// ]);
+
 Route::get('/cart',[
 	'as'=>'getcart',
 	'uses'=>'CartController@getCart'
+]);
+
+Route::post('/discount',[
+	'as'=>'discount',
+	'uses'=>'CartController@discount'
 ]);
 
 Route::get('/get-cart-content',[
@@ -81,3 +106,11 @@ Route::get('/sign-out',[
 	'as'=>'signout',
 	'uses'=>'UserController@getSignOut'
 ]);
+
+Route::post('/rating',[
+	'as'=>'rating',
+	'uses'=>'RatingController@postRating'
+]);
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

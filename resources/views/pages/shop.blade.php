@@ -1,15 +1,16 @@
 @extends('master')
+@section('title', 'Cửa hàng')
 @section('content')
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
             <div class="col-md-7">
-                <h1 class="h2">Category with right sidebar</h1>
+                <h1 class="h2">Cửa hàng</h1>
             </div>
             <div class="col-md-5">
                 <ul class="breadcrumb d-flex justify-content-end">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Category with right sidebar</li>
+                    <li class="breadcrumb-item"><a href="home">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Cửa hàng</li>
                 </ul>
             </div>
         </div>
@@ -19,7 +20,7 @@
     <div class="container">
         <div class="row bar">
             <div class="col-md-9">
-                <p class="text-muted lead">In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide. Pellentesque habitant morbi tristique senectus et netuss.</p>
+                <p class="text-muted lead">Bao năm qua, giới khoa học cũng như các hãng công nghệ luôn nỗ lực không ngừng để mang lại những cải tiến. Vì vậy, dĩ nhiên là không thể có chiếc xe bay nào xuất hiện, nhưng theo Phonearena, những sản phẩm công nghệ dưới đây sẽ rất đáng để chúng ta chờ đợi trong năm 2018.</p>
                 <div class="row products products-big">
                     @foreach($products as $product)
                     <div class="col-lg-4 col-md-6">
@@ -31,9 +32,10 @@
                                 <h3 class="h5"><a href="shop-detail.html">{{$product->name}}</a></h3>
                                 <p class="price">
                                     @if($product->promotion_price == 0)
-                                        {{$product->unit_price}} đ
+                                        {{ number_format($product->unit_price, 0, '.', ',')  }} đ
                                     @else
-                                        <del>{{$product->unit_price}} đ</del>{{$product->promotion_price}} đ
+                                        <del>{{ number_format($product->unit_price, 0, '.', ',')  }} đ</del>
+                                        {{ number_format($product->promotion_price, 0, '.', ',')  }} đ
                                     @endif
                                 </p>
                                 <p class="buttons">
@@ -46,6 +48,10 @@
                                     >Add To Cart</a>
                                 </p>
                             </div>
+                            <div class="ribbon-holder">
+                                <div class="ribbon sale">SALE</div>
+                                <div class="ribbon new">NEW</div>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -56,7 +62,6 @@
                     </div>
                 </div>
                 <div class="pages">
-                    <p class="loadMore text-center"><a href="#" class="btn btn-template-outlined"><i class="fa fa-chevron-down"></i> Load more</a></p>
                     <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                         <ul class="pagination">
                             <li class="page-item">
@@ -73,112 +78,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <!-- MENUS AND FILTERS-->
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading">
-                        <h3 class="h4 panel-title">Categories</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="nav nav-pills flex-column text-sm category-menu">
-                            <li class="nav-item"><a href="shop-category.html" class="nav-link d-flex align-items-center justify-content-between"><span>Men </span><span class="badge badge-secondary">42</span></a>
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">T-shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Pants</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Accessories</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="shop-category.html" class="nav-link active d-flex align-items-center justify-content-between"><span>Ladies  </span><span class="badge badge-light">123</span></a>
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">T-shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Skirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Pants</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Accessories</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="shop-category.html" class="nav-link d-flex align-items-center justify-content-between"><span>Kids  </span><span class="badge badge-secondary">11</span></a>
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">T-shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Skirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Pants</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Accessories</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading d-flex align-items-center justify-content-between">
-                        <h3 class="h4 panel-title">Brands</h3><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i><span class="d-none d-md-inline-block">Clear</span></a>
-                    </div>
-                    <div class="panel-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Armani (10)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Versace (12)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Carlo Bruni (15)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Jack Honey (14)
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-sm btn-template-outlined"><i class="fa fa-pencil"></i> Apply</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading d-flex align-items-center justify-content-between">
-                        <h3 class="h4 panel-titlen">Colours</h3><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i><span class="d-none d-md-inline-block">Clear</span></a>
-                    </div>
-                    <div class="panel-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour white"></span> White (14)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour blue"></span> Blue (10)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour green"></span> Green (20)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour yellow"></span> Yellow (13)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour red"></span> Red (10)
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-sm btn-template-outlined"><i class="fa fa-pencil"></i> Apply</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="banner">
-                    <a href="shop-category.html"><img src="img/banner.jpg" alt="sales 2014" class="img-fluid"></a>
-                </div>
+                @include('category-side')
             </div>
         </div>
     </div>

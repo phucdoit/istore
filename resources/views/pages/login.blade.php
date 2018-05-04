@@ -1,4 +1,5 @@
 @extends('master')
+@section('title', 'Đăng ký')
 @section('content')
 <div id="heading-breadcrumbs">
     <div class="container">
@@ -29,11 +30,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="box">
-                        @if(count($errors)>0)
+                        @if($errors->first('login_error'))
                             <div role="alert" class="alert alert-danger">
-                                @foreach($errors->all() as $err)
-                                {{$err}}
-                                @endforeach
+                                {{$errors->first('login_error')}}
                             </div>
                         @endif
                         @if(Session::has('ok'))

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Universal - All In 1 Template</title>
+    <title>Istore | @yield('title', '')</title>
     <base href="{{asset('')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
@@ -25,7 +25,10 @@
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
 
+    <script src="js/star-rating.js" type="text/javascript"></script>  
     <!-- style cart -->
     <link rel="stylesheet" href="css/style-cart.css">
 
@@ -75,6 +78,9 @@
     <script src="js/jquery.parallax-1.1.3.js"></script>
     <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script src="vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
+    <script src="js/gmaps.js"></script>
+    <script src="js/gmaps.init.js"></script>
     <script src="js/front.js"></script>
 </body>
 

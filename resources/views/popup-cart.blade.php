@@ -11,8 +11,8 @@
     <div class="cd-cart">
         <div class="wrapper">
             <header>
-                <h2>Cart</h2>
-                <span class="undo">Item removed. <a href="#0">Undo</a></span>
+                <h2>Giỏ hàng</h2>
+                <!-- <span class="undo">Item removed. <a href="#0">Undo</a></span> -->
             </header>
             
             <div class="body">
@@ -22,7 +22,7 @@
             </div>
 
             <footer>
-                <a href="cart" class="checkout btn"><em>Checkout - <span>0</span></em></a>
+                <a href="cart" class="checkout btn"><em>Thanh toán - <span>0</span></em></a>
             </footer>
         </div>
     </div> <!-- .cd-cart -->
@@ -33,4 +33,4 @@
     if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
 </script>
 <script src="js/cart.js"></script> <!-- Resource jQuery -->
-<!-- <script src="js/main-cart.js"></script> <!-- Resource jQuery --> -->
+<!-- <script src="js/main-cart.js"></script> <!-- Resource jQuery -->

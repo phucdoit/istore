@@ -6,24 +6,15 @@ use Illuminate\Http\Request;
 use App\User;
 use Hash;
 use Auth;
+use Cart;
 
 class UserController extends Controller
 {
     public function postSignUp(Request $request)
     {
-		// $this->validate($request,
-  //           [
-  //               'email'=>'unique:users,email',
-  //               'password'=>'min:6|max:20',
-  //           ],
-  //           [
-  //               'email.unique'=>'Email đã có người sử dụng',
-  //               'password.min'=>'Mật khẩu ít nhất 6 kí tự'
-  //           ]);
-
 		$check_user = User::where('email', $request->email)->first();
 		if ($check_user != null) {
-            return redirect()->back()->withErrors('Email đã được sử dụng')->withInput();
+            return redirect()->back()->withErrors(['login_error' => ['Email đã được sử dụng']]);
     	}
     	$user = new User();
     	$user->name = $request->name;
@@ -39,14 +30,37 @@ class UserController extends Controller
     {
     	$login = array('email' => $request->email, 'password' => $request->password);
     	if (Auth::attempt($login)) {
+        $cartContent = Cart::content();
+        $currentUserEmail = Auth::user()->email;
+        Cart::restore($currentUserEmail);
+
+        // foreach ($cartContent as $item) {
+        //     Cart::add(
+        //         array(
+        //             'id' => $item->id,
+        //             'name' => $item->name,
+        //             'qty' => $item->qty,
+        //             'price' => $item->price,
+        //             'options' => [
+        //                 'thumbnail' => $item->options->thumbnail
+        //             ]
+        //         )
+        //     );
+        // }
+        
+        session()->put(['total'=> intval(Cart::total(0,'','',''))]);
+        // Cart::store($currentUserEmail);
     		return redirect()->back();
     	}
     	else{
-    		return redirect()->back()->withErrors(['Đăng nhập không thành công', 'Kiểm tra lại username hoặc password .']);
+        return redirect()->back()->withErrors(['login_error' => [ 'Kiểm tra lại username hoặc password .']]);
     	}
     }
 
     public function getSignOut(){
+        Cart::destroy();
+        session()->forget('coupon');
+        session()->forget('total');
     	Auth::logout();
     	return redirect()->back();
     }

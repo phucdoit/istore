@@ -1,11 +1,16 @@
 <!-- Top bar-->
-                    @if(count($errors)>0)
-                        <div role="alert" class="alert alert-danger">
-                            @foreach($errors->all() as $err)
-                            {{$err}}
-                            @endforeach
-                        </div>
-                    @endif
+<!-- @if(count($errors)>0)
+    <div role="alert" class="alert alert-danger">
+        @foreach($errors->all() as $err)
+        {{$err}}
+        @endforeach
+    </div>
+@endif -->
+@if($errors->first('login_error'))
+    <div role="alert" class="alert alert-danger">
+        {{$errors->first('login_error')}}
+    </div>
+@endif
 <div class="top-bar">
     <div class="container">
         <div class="row d-flex align-items-center">
@@ -77,16 +82,10 @@
             <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
             <div id="navigation" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown active"><a href="home">Trang chủ</a></li>
-                    <li class="nav-item dropdown menu-large"><a href="shop">Cửa hàng</a></li>
-                    <!-- ========== FULL WIDTH MEGAMENU ==================-->
-                    <li class="nav-item dropdown menu-large"><a href="cart">Giỏ hàng</a>
-                    </li>
-                    <!-- ========== FULL WIDTH MEGAMENU END ==================-->
-                    <!-- ========== Contact dropdown ==================-->
-                    <li class="nav-item dropdown"><a href="javascript: void(0)">Liên hệ</a>
-                    </li>
-                    <!-- ========== Contact dropdown end ==================-->
+                    <li class="nav-item dropdown {{{ (Request::is('home') ? 'active' : 'menu-large') }}}"><a href="home">Trang chủ</a></li>
+                    <li class="nav-item dropdown {{{ (Request::is('shop') ? 'active' : 'menu-large') }}}"><a href="shop">Cửa hàng</a></li>
+                    <li class="nav-item dropdown {{{ (Request::is('cart') ? 'active' : 'menu-large') }}}"><a href="cart">Giỏ hàng</a></li>
+                    <li class="nav-item dropdown {{{ (Request::is('contact') ? 'active' : 'menu-large') }}}"><a href="contact">Liên hệ</a></li>
                 </ul>
             </div>
             <div id="search" class="collapse clearfix">

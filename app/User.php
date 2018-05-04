@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function order()
+    {
+        return $this->hasMany('App\Order', 'user_id', 'id');
+    }
+
+    public function shipping_info()
+    {
+        // (  , khóa ngoại trong bảng shipping_info, khóa chính của bảng customer)
+        return $this->hasMany('App\ShippingInfo', 'user_id', 'id');
+    }
 }

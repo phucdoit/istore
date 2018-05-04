@@ -89,7 +89,7 @@ $(document).ready(function($) {
                 updateCartCount(data.count);
                 updateCartTotal(data.subtotal);
                 shoppingCartItems = parseCartContent(data.content);
-                // console.log(shoppingCartItems);
+                console.log(data);
                 showCart();
             },
             error: function(error) { // What to do if we fail
@@ -109,7 +109,7 @@ $(document).ready(function($) {
         if (shoppingCartItems != null) {
             cartList.html("");
             // Duyệt qua mảng shoppingCartItems để append từng item dòng vào table
-            console.log(shoppingCartItems);
+            // console.log(shoppingCartItems);
             $.each(shoppingCartItems, function(index, item) {
                 var htmlString = '';
                 htmlString += '<li class="product">';
@@ -182,6 +182,7 @@ $(document).ready(function($) {
             type: 'GET',
             url: '/get-cart-content',
             success: function(data) {
+                console.log(data);
 				updateCartCount(data.count);
                 updateCartTotal(data.subtotal);
                 shoppingCartItems = parseCartContent(data.content);

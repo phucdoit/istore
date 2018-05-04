@@ -1,4 +1,5 @@
 @extends('master')
+@section('title', 'Trang chủ')
 @section('content')
 <section style="background: url('img/photogrid.jpg') center center repeat; background-size: cover;" class="bar background-white relative-positioned">
     <div class="container">
@@ -10,24 +11,23 @@
                     <div class="item">
                         <div class="row">
                             <div class="col-md-5 text-right">
-                                <p><img src="img/logo.png" alt="" class="ml-auto"></p>
-                                <h1>Multipurpose responsive theme</h1>
-                                <p>Business. Corporate. Agency.
-                                    <br>Portfolio. Blog. E-commerce.</p>
+                                <h1>iphone X</h1>
+                                <p>Say Hello
+                                    <br>to the future</p>
                             </div>
-                            <div class="col-md-7"><img src="img/template-homepage.png" alt="" class="img-fluid"></div>
+                            <div class="col-md-7"><img src="img/ios_large.png" alt="" class="img-fluid"></div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="row">
-                            <div class="col-md-7 text-center"><img src="img/template-mac.png" alt="" class="img-fluid"></div>
+                            <div class="col-md-7 text-center"><img src="img/imac_large.png" alt="" class="img-fluid"></div>
                             <div class="col-md-5">
-                                <h2>46 HTML pages full of features</h2>
+                                <h2>iMac</h2>
                                 <ul class="list-unstyled">
-                                    <li>Sliders and carousels</li>
-                                    <li>4 Header variations</li>
-                                    <li>Google maps, Forms, Megamenu, CSS3 Animations and much more</li>
-                                    <li>+ 11 extra pages showing template features</li>
+                                    <!-- <li>Tầm nhìn sáng hơn bao giờ hết.</li> -->
+                                    <li> công nghệ đồ họa mới nhất.</li>
+                                    <li> bộ nhớ sáng tạo, băng thông cao hơn.</li>
+                                    <li> màn hình Retina sáng nhất và đầy màu sắc.</li>
                                 </ul>
                             </div>
                         </div>
@@ -35,25 +35,26 @@
                     <div class="item">
                         <div class="row">
                             <div class="col-md-5 text-right">
-                                <h1>Design</h1>
+                                <h1>Watch</h1>
                                 <ul class="list-unstyled">
-                                    <li>Clean and elegant design</li>
-                                    <li>Full width and boxed mode</li>
-                                    <li>Easily readable Roboto font and awesome icons</li>
-                                    <li>7 preprepared colour variations</li>
+                                    <li>Tuyệt vời cho chạy bộ</li>
+                                    <li>Chống nước chuẩn IP68</li>
+                                    <li>Đa dạng màu sắc</li>
                                 </ul>
                             </div>
-                            <div class="col-md-7"><img src="img/template-easy-customize.png" alt="" class="img-fluid"></div>
+                            <div class="col-md-7"><img src="img/nike_large.png" alt="" class="img-fluid" style="max-width: 350px;"></div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="row">
-                            <div class="col-md-7"><img src="img/template-easy-code.png" alt="" class="img-fluid"></div>
+                            <div class="col-md-7"><img src="img/apple-music-topic2.png" alt="" class="img-fluid"></div>
                             <div class="col-md-5">
-                                <h1>Easy to customize</h1>
+                                <h1>Music</h1>
                                 <ul class="list-unstyled">
-                                    <li>7 preprepared colour variations.</li>
-                                    <li>Easily to change fonts</li>
+                                    <li>45 triệu bài hát.</li>
+                                    <li>Nghe nhạc yêu thích</li>
+                                    <li>Không có quảng cáo</li>
+                                    <li>3 tháng dùng thử</li>
                                 </ul>
                             </div>
                         </div>
@@ -70,22 +71,22 @@
             <div class="col-lg-4 col-md-6">
                 <div class="box-simple">
                     <div class="icon-outlined"><i class="fa fa-desktop"></i></div>
-                    <h3 class="h4">Webdesign</h3>
-                    <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
+                    <h3 class="h4">Đổi trả</h3>
+                    <p>Miễn phí đổi trả trong vòng 30 ngày.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="box-simple">
                     <div class="icon-outlined"><i class="fa fa-print"></i></div>
-                    <h3 class="h4">Print</h3>
-                    <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>
+                    <h3 class="h4">Bảo hành</h3>
+                    <p>Cam kết bảo hành 1 đổi 1 trong vòng 1 năm.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="box-simple">
                     <div class="icon-outlined"><i class="fa fa-globe"></i></div>
-                    <h3 class="h4">SEO and SEM</h3>
-                    <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
+                    <h3 class="h4">Giao hàng</h3>
+                    <p>Giao hàng nhanh trong ngày với nội thành và tối đa 3 ngày với ngoại thành.</p>
                 </div>
             </div>
         </div>
@@ -93,22 +94,22 @@
             <div class="col-lg-4 col-md-6">
                 <div class="box-simple">
                     <div class="icon-outlined"><i class="fa fa-lightbulb-o"></i></div>
-                    <h3 class="h4">Consulting</h3>
-                    <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
+                    <h3 class="h4">Trả góp</h3>
+                    <p>Quy đổi trả góp 60% tổng giá trị đơn hàng.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="box-simple">
                     <div class="icon-outlined"><i class="fa fa-envelope-o"></i></div>
-                    <h3 class="h4">Email Marketing</h3>
-                    <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>
+                    <h3 class="h4">Chăm sóc khách hàng</h3>
+                    <p>Dịch vụ hỗ trợ khách hàng hoạt động 24/24 bất kể lễ tết.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="box-simple">
                     <div class="icon-outlined"><i class="fa fa-user"></i></div>
-                    <h3 class="h4">UX</h3>
-                    <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
+                    <h3 class="h4">Bảo mật</h3>
+                    <p>Chúng tôi cam kết bảo mật thông tin cá nhân của bạn bằng mọi cách thức có thể.</p>
                 </div>
             </div>
         </div>
@@ -117,15 +118,15 @@
 <section class="bar background-pentagon no-mb text-md-center">
     <div class="container">
         <div class="heading text-center">
-            <h2>Testimonials</h2>
+            <h2>Khách hàng nói gì về Istore</h2>
         </div>
-        <p class="lead">We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us.</p>
+        <p class="lead">Chúng tôi đã làm việc với nhiều khách hàng và chúng tôi luôn muốn nghe họ đến từ sự hợp tác hạnh phúc và hài lòng. Có một cái nhìn khách quan về những gì khách hàng nói về chúng tôi.</p>
         <!-- Carousel Start-->
         <ul class="owl-carousel testimonials list-unstyled equal-height">
             <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                     <div class="text">
-                        <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
+                        <p>Tôi đi mua điện thoại ở nhiều cửa hàng rồi nhưng ấn tượng với Di Động Istore nhất, các bạn nhân viên ở đây nhiệt tình và vui vẻ tư vấn cho tôi. Hàng hóa nguyên bản, giá cả phải chăng. Bộ phận kĩ thuật hỗ trợ tôi rất nhiệt tình. Cảm ơn các bạn Di Động Istore.</p>
                     </div>
                     <div class="bottom d-flex align-items-center justify-content-between align-self-end">
                         <div class="icon"><i class="fa fa-quote-left"></i></div>
@@ -142,7 +143,7 @@
             <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                     <div class="text">
-                        <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream.</p>
+                        <p>Hàng iPhone tôi mua ở đây mua chuẩn hàng zin 100%, lại được bảo hành 15 tháng quá chất. Tôi đã mua 7 máy ở đây và đến giờ vẫn giới thiệu bạn bè qua mua, vừa tiết kiệm vừa bền. Bây giờ mua quen thì không cần đến cửa hàng chọn máy mà ở nhà gọi ship là xong.</p>
                     </div>
                     <div class="bottom d-flex align-items-center justify-content-between align-self-end">
                         <div class="icon"><i class="fa fa-quote-left"></i></div>
@@ -159,8 +160,8 @@
             <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                     <div class="text">
-                        <p>His room, a proper human room although a little too small, lay peacefully between its four familiar walls.</p>
-                        <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+                        <p>Ngày trước em hay mua hàng ở bên Istore và thấy chất lượng dịch vụ ở Istore rất tốt.</p>
+                        <p>Các anh chị nhiệt tình vui vẻ nên khi ra trường em đã xin vào làm ở Istore. Đến nay em đã gắn với Istore được 2 năm và phụ trách CSKH online. Em rất vui khi phụ trách công việc này </p>
                     </div>
                     <div class="bottom d-flex align-items-center justify-content-between align-self-end">
                         <div class="icon"><i class="fa fa-quote-left"></i></div>
@@ -177,7 +178,7 @@
             <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                     <div class="text">
-                        <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
+                        <p>Tôi là khách hàng thân thiết của Di Động Istore từ những ngày đầu tiên đến giờ, luôn rất hài lòng với các bạn. Bạn bè trong công ty tôi cũng mua ở đây hơn chục máy rồi, vừa rẻ vừa được bảo hành lâu. Ở Hà Nội tôi chỉ tin tưởng Di Động Istore.</p>
                     </div>
                     <div class="bottom d-flex align-items-center justify-content-between align-self-end">
                         <div class="icon"><i class="fa fa-quote-left"></i></div>
@@ -194,7 +195,7 @@
             <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                     <div class="text">
-                        <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
+                        <p>Em mua 2 máy Sony Z3c ở bên Di Động Istore rồi, em rất thích bên mình ạ. Ở Hà Nội cứ mua bên Istore vừa bán rẻ nhất lại là hàng zin, không lo hàng dựng, bảo hành 6 tháng nên em thấy yên tâm. Các anh chị cũng hỗ trợ nhiệt tình nữa. Bạn bè em hỏi em cũng giới thiệu đến Istore.</p>
                     </div>
                     <div class="bottom d-flex align-items-center justify-content-between align-self-end">
                         <div class="icon"><i class="fa fa-quote-left"></i></div>
@@ -203,7 +204,7 @@
                                 <h5>John McIntyre</h5>
                                 <p>CEO, TransTech</p>
                             </div>
-                            <div class="avatar"><img alt="" src="img/person-1.jpg" class="img-fluid"></div>
+                            <div class="avatar"><img alt="" src="img/blog-avatar.jpg" class="img-fluid"></div>
                         </div>
                     </div>
                 </div>
@@ -216,12 +217,12 @@
     <div class="dark-mask"></div>
     <div class="container">
         <div class="icon icon-outlined icon-lg"><i class="fa fa-file-code-o"></i></div>
-        <h3 class="text-uppercase">Do you want to see more?</h3>
-        <p class="lead">We have prepared for you more than 40 different HTML pages, including 5 variations of homepage.</p>
-        <p class="text-center"><a href="index2.html" class="btn btn-template-outlined-white btn-lg">See another homepage</a></p>
+        <h3 class="text-uppercase">Bạn muốn xem nhiều hơn?</h3>
+        <p class="lead">Chúng tôi cung cấp hơn 100 sản phẩm khác nhau, trong nhiều danh mục.</p>
+        <p class="text-center"><a href="shop" class="btn btn-template-outlined-white btn-lg">Cửa hàng của chúng tôi</a></p>
     </div>
 </section>
-<section class="bg-white bar">
+<!-- <section class="bg-white bar">
     <div class="container">
         <div class="heading text-center">
             <h2>From the blog</h2>
@@ -278,19 +279,19 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <section class="bar bg-gray">
     <div class="container">
         <div class="heading text-center">
-            <h2>Our Clients</h2>
+            <h2>Khhách hàng của chúng tôi</h2>
         </div>
         <ul class="list-unstyled owl-carousel customers no-mb">
-            <li class="item"><img src="img/customer-1.png" alt="" class="img-fluid"></li>
-            <li class="item"><img src="img/customer-2.png" alt="" class="img-fluid"></li>
-            <li class="item"><img src="img/customer-3.png" alt="" class="img-fluid"></li>
-            <li class="item"><img src="img/customer-4.png" alt="" class="img-fluid"></li>
-            <li class="item"><img src="img/customer-5.png" alt="" class="img-fluid"></li>
-            <li class="item"><img src="img/customer-6.png" alt="" class="img-fluid"></li>
+            <li class="item"><img src="img/apple.png" alt="" class="img-fluid"></li>
+            <li class="item"><img src="img/samsung.jpg" alt="" class="img-fluid"></li>
+            <li class="item"><img src="img/oppo.png" alt="" class="img-fluid"></li>
+            <li class="item"><img src="img/philip.jpg" alt="" class="img-fluid"></li>
+            <li class="item"><img src="img/sony.jpg" alt="" class="img-fluid"></li>
+            <li class="item"><img src="img/xiaomi.jpg" alt="" class="img-fluid"></li>
         </ul>
     </div>
 </section>

@@ -1,4 +1,5 @@
 @extends('master')
+@section('title', $product->name)
 @section('content')
 <div id="heading-breadcrumbs">
     <div class="container">
@@ -17,12 +18,17 @@
     </div>
 </div>
 <div id="content">
+    <style type="text/css">
+        #content img {
+            width: 100%;
+        }
+    </style>
     <div class="container">
         <div class="row bar">
             <!-- LEFT COLUMN _________________________________________________________-->
             <div class="col-lg-9">
                 <p class="lead">Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain me be. So landlord by we unlocked sensible it. Fat cannot use denied excuse son law. Wisdom happen suffer common the appear ham beauty her had. Or belonging zealously existence as by resources.</p>
-                <p class="goToDescription"><a href="#details" class="scroll-to text-uppercase">Scroll to product details, material & care and sizing</a></p>
+                <p class="goToDescription"><a href="#details" class="scroll-to text-uppercase">Cuộn xuống chi tiết sản phẩm</a></p>
                 <div id="productMain" class="row">
                     <div class="col-sm-6">
                         <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
@@ -34,7 +40,7 @@
                     <div class="col-sm-6">
                         <div class="box">
                             <form>
-                                <div class="sizes">
+<!--                                 <div class="sizes">
                                     <h3>Available sizes</h3>
                                     <select class="bs-select">
                                         <option value="small">Small</option>
@@ -42,12 +48,13 @@
                                         <option value="large">Large</option>
                                         <option value="x-large">X Large</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <p class="price">
                                     @if($product->promotion_price == 0)
-                                        {{$product->unit_price}} đ
+                                        {{ number_format($product->unit_price, 0, '.', ',')  }} đ
                                     @else
-                                        <del>{{$product->unit_price}} đ</del><br/>{{$product->promotion_price}} đ
+                                        <del>{{ number_format($product->unit_price, 0, '.', ',')  }} đ</del><br/>
+                                        {{ number_format($product->promotion_price, 0, '.', ',')  }} đ
                                     @endif
                                 </p>
                                 <p class="text-center">
@@ -72,8 +79,110 @@
                 <div id="details" class="box mb-4 mt-4">
                     {!!$product->description!!}
                 </div>
+
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <!-- Comment -->
+                <div class="row">
+                    <div class="col-lg-12">
+                    <div class="rating-container rating-xs rating-animate">
+                        <div class="rating-stars">
+                            <span class="empty-stars">
+                                <span class="star"><i class="fa fa-star-o"></i></span>
+                                <span class="star"><i class="fa fa-star-o"></i></span>
+                                <span class="star"><i class="fa fa-star-o"></i></span>
+                                <span class="star"><i class="fa fa-star-o"></i></span>
+                                <span class="star"><i class="fa fa-star-o"></i></span>
+                            </span>
+                            <span class="filled-stars" style="width: {{ (float) $ratingAVG/5*100 }}%">
+                                <span class="star"><i class="fa fa-star"></i></span>
+                                <span class="star"><i class="fa fa-star"></i></span>
+                                <span class="star"><i class="fa fa-star"></i></span>
+                                <span class="star"><i class="fa fa-star"></i></span>
+                                <span class="star"><i class="fa fa-star"></i></span>
+                            </span>
+                        </div>
+                        <div class="caption">
+                            <span class="label label-success badge-success">
+                                @if($ratingAVG)
+                                    {{ number_format($ratingAVG, 1, ',', '') }} sao trên 5
+                                @else
+                                    Sản phẩm này chưa có đánh giá
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                        <!-- <h2 class="page-header">Đánh giá</h2> -->
+                        @if(!$ratings->isEmpty())
+                        <section class="comment-list">
+                            @foreach($ratings as $rating)
+                                <div class="row border-bottom" style="padding-top: 20px;">
+                                    <div class="col-md-1 col-sm-1 hidden-xs" style="padding-right: 0px;">
+                                        @if(!$rating->avatar)
+                                            <img class="user-avatar rounded-circle" src="img/blog-avatar.jpg" alt="Avatar" />
+                                        @else
+                                            <img class="user-avatar rounded-circle" src="img/{{$rating->avatar}}" alt="Avatar" />
+                                        @endif
+                                    </div>
+                                    <div class="col-md-11 col-sm-11">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="comment-user"> {{$rating->username}} <small class="comment-date"><i class="fa fa-clock-o"></i> {{$rating->created_at}}</small></div>
+                                                    <div class="old-rating">
+                                                        @for ($i = 0; $i < 5; $i++)
+                                                            @if($i < $rating->rating)
+                                                                <span class="fa fa-star checked"></span>
+                                                            @else
+                                                                <span class="fa fa-star"></span>
+                                                            @endif
+                                                        @endfor
+                                                    </div>
+                                                </header>
+                                                <div class="comment-post">
+                                                    <p>
+                                                        {{ $rating->content }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </section>
+                        @endif
+                    </div>
+                </div>
+                <!-- End Comment -->
+                @if($isBought)
+                <!-- Rating -->
+                <div id="rating" class="mb-4 mt-4">
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">Đánh giá của bạn</h2>
+                        <form action="rating" method="post">
+                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <input id="star-rating-demo" name="rating" value="@if($currentUserRating){{ $currentUserRating->rating }}@endif" type="number" class="rating" min=0 max=5 step=1 data-size="xs" required="">
+                            <textarea class="form-control" name="content" rows="5">@if($currentUserRating){{ $currentUserRating->content }}@endif</textarea>
+                            <button type="submit" class="btn btn-primary right">Gửi</button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Rating -->
+                @endif
+
                 <div id="product-social" class="box social text-center mb-5 mt-5">
-                    <h4 class="heading-light">Show it to your friends</h4>
+                    <h4 class="heading-light">Chia sẻ nó tới bạn bè</h4>
                     <ul class="social list-inline">
                         <li class="list-inline-item"><a href="#" data-animate-hover="pulse" class="external facebook"><i class="fa fa-facebook"></i></a></li>
                         <li class="list-inline-item"><a href="#" data-animate-hover="pulse" class="external gplus"><i class="fa fa-google-plus"></i></a></li>
@@ -81,194 +190,37 @@
                         <li class="list-inline-item"><a href="#" data-animate-hover="pulse" class="email"><i class="fa fa-envelope"></i></a></li>
                     </ul>
                 </div>
-                <div class="row">
+<!--                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="box text-uppercase mt-0 mb-small">
-                            <h3>You may also like these products</h3>
+                            <h3>Có thể bạn sẽ thích</h3>
                         </div>
                     </div>
+                    @foreach($suggestionProduct as $item)
                     <div class="col-lg-3 col-md-6">
                         <div class="product">
                             <div class="image">
-                                <a href="#"><img src="img/product2.jpg" alt="" class="img-fluid image1"></a>
+                                <a href="product/{{$product->id}}"><img src="img/{{$product->thumbnail}}" alt="" class="img-fluid image1"></a>
                             </div>
                             <div class="text">
-                                <h3 class="h5"><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143</p>
+                                <h3 class="h5"><a href="shop-detail.html">{{$product->name}}</a></h3>
+                                <p class="price">
+                                    @if($product->promotion_price == 0)
+                                        {{ number_format($product->unit_price, 0, '.', ',')  }} đ
+                                    @else
+                                        <del>{{ number_format($product->unit_price, 0, '.', ',')  }} đ</del>
+                                        {{ number_format($product->promotion_price, 0, '.', ',')  }} đ
+                                    @endif
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="#"><img src="img/product3.jpg" alt="" class="img-fluid image1"></a>
-                            </div>
-                            <div class="text">
-                                <h3 class="h5"><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="#"><img src="img/product1.jpg" alt="" class="img-fluid image1"></a>
-                            </div>
-                            <div class="text">
-                                <h3 class="h5"><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="box text-uppercase mt-0 mb-small">
-                            <h3>Products viewed recently</h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="#"><img src="img/product3.jpg" alt="" class="img-fluid image1"></a>
-                            </div>
-                            <div class="text">
-                                <h3 class="h5"><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="#"><img src="img/product1.jpg" alt="" class="img-fluid image1"></a>
-                            </div>
-                            <div class="text">
-                                <h3 class="h5"><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="#"><img src="img/product2.jpg" alt="" class="img-fluid image1"></a>
-                            </div>
-                            <div class="text">
-                                <h3 class="h5"><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                </div> -->
+                @include('recommend-side')
             </div>
-            <div class="col-lg-3">
-                <!-- MENUS AND FILTERS-->
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading">
-                        <h3 class="h4 panel-title">Categories</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="nav nav-pills flex-column text-sm category-menu">
-                            <li class="nav-item"><a href="shop-category.html" class="nav-link d-flex align-items-center justify-content-between"><span>Men </span><span class="badge badge-secondary">42</span></a>
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">T-shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Pants</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Accessories</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="shop-category.html" class="nav-link active d-flex align-items-center justify-content-between"><span>Ladies  </span><span class="badge badge-light">123</span></a>
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">T-shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Skirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Pants</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Accessories</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="shop-category.html" class="nav-link d-flex align-items-center justify-content-between"><span>Kids  </span><span class="badge badge-secondary">11</span></a>
-                                <ul class="nav nav-pills flex-column">
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">T-shirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Skirts</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Pants</a></li>
-                                    <li class="nav-item"><a href="shop-category.html" class="nav-link">Accessories</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading d-flex align-items-center justify-content-between">
-                        <h3 class="h4 panel-title">Brands</h3><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i><span class="d-none d-md-inline-block">Clear</span></a>
-                    </div>
-                    <div class="panel-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Armani (10)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Versace (12)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Carlo Bruni (15)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Jack Honey (14)
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-sm btn-template-outlined"><i class="fa fa-pencil"></i> Apply</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading d-flex align-items-center justify-content-between">
-                        <h3 class="h4 panel-titlen">Colours</h3><a href="#" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i><span class="d-none d-md-inline-block">Clear</span></a>
-                    </div>
-                    <div class="panel-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour white"></span> White (14)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour blue"></span> Blue (10)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour green"></span> Green (20)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour yellow"></span> Yellow (13)
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"><span class="colour red"></span> Red (10)
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-sm btn-template-outlined"><i class="fa fa-pencil"></i> Apply</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="banner">
-                    <a href="shop-category.html"><img src="img/banner.jpg" alt="sales 2014" class="img-fluid"></a>
-                </div>
+            <div class="col-md-3">
+                @include('category-side')
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<div id="order-summary" class="box mt-0 mb-4 p-0">
+<div id="order-summary" class="box mb-4 p-0">
     <div class="box-header mt-0">
         <h3>Đơn hàng</h3>
     </div>
@@ -8,19 +8,27 @@
             <tbody>
                 <tr>
                     <td>Đơn hàng</td>
-                    <th>{!! Cart::subtotal(); !!} đ</th>
+                    <th class="right">{!! Cart::subtotal(0); !!} đ</th>
                 </tr>
                 <tr>
                     <td>Vận chuyển</td>
-                    <th>0.00</th>
+                    <th class="right">0 đ</th>
                 </tr>
                 <tr>
                     <td>Thuế</td>
-                    <th>0.00</th>
+                    <th class="right">{{ Cart::tax(0)}} đ</th>
                 </tr>
+                @if (session()->has('coupon'))
+                    <td>Code - {{ session()->get('coupon')['name'] }}</td>
+                    <th class="right">- {{ number_format(session()->get('coupon')['discount'], 0, '.', ',')  }} đ</th>
+                @endif
                 <tr class="total">
                     <td>Tổng cộng</td>
-                    <th>{!! Cart::subtotal(); !!} đ</th>
+                    @if (session()->has('total'))
+                        <th class="right">{{ number_format(session()->get('total'), 0, '.', ',')  }} đ</th>
+                    @else
+                        <th class="right">{!! Cart::total(0); !!} đ</th>
+                    @endif
                 </tr>
             </tbody>
         </table>

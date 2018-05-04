@@ -10,7 +10,7 @@ class Order extends Model
 
     public function customer()
     {
-    	return $this->belongsTo('App\Customer', 'customer_id', 'id');
+    	return $this->belongsTo('App\User', 'customer_id', 'id');
     }
     
 	public function shipping_info()
