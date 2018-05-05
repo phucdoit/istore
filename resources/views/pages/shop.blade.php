@@ -48,10 +48,17 @@
                                     >Add To Cart</a>
                                 </p>
                             </div>
+                            @if(!$product->category_ids->isEmpty())
                             <div class="ribbon-holder">
-                                <div class="ribbon sale">SALE</div>
-                                <div class="ribbon new">NEW</div>
+                                    @foreach($product->category_ids as $category)
+                                        @if($category->category_id === 3)
+                                            <div class="ribbon new">{{$category->name}}</div>
+                                        @elseif($category->category_id === 4)
+                                            <div class="ribbon sale">{{$category->name}}</div>
+                                        @endif
+                                    @endforeach
                             </div>
+                            @endif  
                         </div>
                     </div>
                     @endforeach

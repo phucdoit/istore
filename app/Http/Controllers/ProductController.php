@@ -21,9 +21,9 @@ class ProductController extends Controller
         foreach ($categories as $category) {
             $category->count = ProductCategory::where('category_id', $category->id)->count();
         }
-
         return $categories;
     }
+    
     public function getProduct(Request $request){
     	// $products = Product::find(1)->product_image;
     	$products = Product::all();
@@ -32,14 +32,30 @@ class ProductController extends Controller
         if($request->category){
             $products = Product::join('product_category', 'product.id', '=', 'product_category.product_id')
             ->join('category', 'category.id', '=', 'product_category.category_id')->where('category_id', $request->category)
+            ->select('product.*')
             ->get();
         }
+
+        foreach ($products as $item) {
+            $categoryByProduct = Category::join('product_category', 'category.id', '=', 'product_category.category_id')
+            ->where('product_category.product_id', $item->id)
+            ->get();
+            $item->category_ids = $categoryByProduct;
+        }
+
+        // dd($products);
 
     	return view('pages.shop', compact('products','categories'));
     }
 
     public function getDetail(Request $request){
         $categories = $this->getCategory();
+
+        $categoryByProduct = Category::join('product_category', 'category.id', '=', 'product_category.category_id')
+        ->where('product_category.product_id', $request->id)
+        ->get();
+
+        // dd($categoryByProduct);
 
         $productId = $request->id;
     	$product = Product::where('id', $productId)->first();
@@ -70,7 +86,7 @@ class ProductController extends Controller
 
         // dd($currentUserRating);
 
-    	return view('pages.detail', compact('product', 'productImage', 'ratingAVG','ratings', 'isBought','currentUserRating', 'categories', 'suggestionProduct'));
+    	return view('pages.detail', compact('product', 'productImage', 'ratingAVG','ratings', 'isBought','currentUserRating', 'categories', 'suggestionProduct', 'categoryByProduct'));
     }
 
     protected function isBought($user_id, $product_id)

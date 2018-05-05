@@ -95,4 +95,8 @@ class CartController extends Controller
         }
     }
 
+    public function getDebug()
+    {
+        dd(session());
+    }
 }

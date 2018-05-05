@@ -570,16 +570,16 @@
     $.fn.ratingLocales.en = {
         defaultCaption: '{rating} Stars',
         starCaptions: {
-            0.5: 'Half Star',
-            1: 'One Star',
-            1.5: 'One & Half Star',
-            2: 'Two Stars',
+            0.5: 'Half Stars',
+            1: 'Tệ',
+            1.5: 'One & Half Stars',
+            2: 'Trung Bình',
             2.5: 'Two & Half Stars',
-            3: 'Three Stars',
+            3: 'Khá',
             3.5: 'Three & Half Stars',
-            4: 'Four Stars',
+            4: 'Tốt',
             4.5: 'Four & Half Stars',
-            5: 'Five Stars'
+            5: 'Rất Tốt'
         },
         clearButtonTitle: 'Clear',
         clearCaption: 'Not Rated'

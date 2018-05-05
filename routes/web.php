@@ -42,6 +42,9 @@ Route::get('/checkout3', "PageController@getCheckout3");
 Route::get('/checkout4', "PageController@getCheckout4");
 Route::get('/contact', "PageController@getContact");
 
+Route::get('/debug', "CartController@getDebug");
+
+
 Route::get('/checkout',[
 	'as'=>'checkout',
 	'uses'=>'OrderController@index'
@@ -52,10 +55,7 @@ Route::get('/checkout',[
 // 	'uses'=>'OrderController@index'
 // ])->middleware('CheckUserCheckOut');
 
-
 Route::get('/login', "PageController@getLogin");
-
-Route::get('/getmsg','AjaxController@index');
 
 Route::post('/add-cart',[
 	'as'=>'addcart',

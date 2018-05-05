@@ -119,7 +119,7 @@ $(document).ready(function($) {
                 htmlString += '</a></div>';
                 htmlString += '<div class="product-details">';
                 htmlString += '<div><p style="width: 100%;margin: 0;display: inline-flex;padding-right: 15px;"><span class="quantity">' + item.quantity + 'x&nbsp</span>';
-                htmlString += '<a href="product/' + item.id + '">' + item.name + '</a></p><span class="cd-price">' + item.price + '</span></div>';
+                htmlString += '<a href="product/' + item.id + '">' + item.name + '</a></p><span class="cd-price">' + formatNumber(item.price) + ' đ</span></div>';
                 htmlString += '<div class="actions"><a href="#0" class="delete-item">x</a>';
                 htmlString += '</div></div></li>';
                 cartList.prepend(htmlString);
@@ -192,6 +192,17 @@ $(document).ready(function($) {
                 alert('Đã xảy ra lỗi get cart');
             }
         });
+    }
+
+    function formatNumber(number){
+        number = number.toFixed(2) + '';
+        x = number.split('.');
+        x1 = x[0];
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1;
     }
 
 });

@@ -27,7 +27,7 @@
         <div class="row bar">
             <!-- LEFT COLUMN _________________________________________________________-->
             <div class="col-lg-9">
-                <p class="lead">Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain me be. So landlord by we unlocked sensible it. Fat cannot use denied excuse son law. Wisdom happen suffer common the appear ham beauty her had. Or belonging zealously existence as by resources.</p>
+                <p class="lead">Thay đổi suy nghĩ của người Việt trẻ về nền văn hoá công nghệ: sự tối giản và nhanh gọn không chỉ thể hiện qua quần áo – mà còn từ lối sống để hướng tới nhiều mục tiêu cao cả hơn.</p>
                 <p class="goToDescription"><a href="#details" class="scroll-to text-uppercase">Cuộn xuống chi tiết sản phẩm</a></p>
                 <div id="productMain" class="row">
                     <div class="col-sm-6">
